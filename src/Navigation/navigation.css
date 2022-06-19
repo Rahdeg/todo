@@ -1,0 +1,30 @@
+.hide{
+    margin-left: 1rem;
+    display: none;
+    position: relative;
+}
+
+@media screen and (max-width: 1050px){
+    .nav_content{
+        display: none;
+    }
+    .hide{
+        display: flex;
+        
+    }
+}
+@media screen and (max-width: 700px){
+    .pd_contain{
+       padding: 2rem 4rem;
+    }
+}
+@media screen and (max-width: 550px){
+    .pd_contain{
+       padding: 2rem;
+    }
+    
+    .hide__contain{
+        top:20px;
+    }
+
+}
