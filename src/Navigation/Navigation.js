@@ -11,7 +11,7 @@ const Navigation = () => {
     <div className='fl w-100 pa2 ba '>
       <div className='flex justify-between'>
       <div className='f3 link dim i white pv2 '>
-      <Link className='white pv2 ba br3 bg-dark-blue' to='/homee'>
+      <Link className='white pv2 ba br3 bg-dark-blue' to='/'>
       TODO APP
       </Link>
       </div>
