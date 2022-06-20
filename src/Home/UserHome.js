@@ -14,8 +14,8 @@ const UserHome = () => {
     WE ARE HERE TO SATISFY YOUR NEED
     </h3>
     <div className='center tc mt5'>
-    <Link to='/signin'>
-    <a class="f6 link dim ph5 pv4 br3 w8 mb2 dib white bg-dark-blue" href="#0">Explore the App</a>
+    <Link to='/register'>
+    <a class="f6 link dim ph5 pv4 br3 w8 mb2 dib white bg-dark-blue" href="#0">Register Your Account</a>
     </Link>
     </div>
     

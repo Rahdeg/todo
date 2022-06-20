@@ -23,6 +23,7 @@ const Navigation = () => {
       <Link to='/signin'>
       <a class="f6 link dim ph3 pv2 mb2 br2 dib white bg-hot-pink" href="#0">SignOut</a>
       </Link>
+      
       </div>
     
      
