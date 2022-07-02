@@ -1,49 +1,54 @@
 import React from 'react'
-import './home.css'
 import axios from 'axios'
-import { useState,useEffect} from 'react'
+import { useEffect,useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
- 
 
-const Home = () => {
-    const [task, setTask] = useState([])
-    
+
+
+
+const Dashboard = () => {
+    const [getdata, setgetdata] = useState([])
    
+
+
+     const {id} = useParams();
+
+     const loadData = async (id) =>{
+      const response = await axios.get(`https://todo22a.herokuapp.com/api/v1/task/user/${id}`);
+      setgetdata(response.data)
+  }
+
+
+  
   
 
-   
-   
-    const loadData = async () =>{
-        const response = await axios.get(`https://todo22a.herokuapp.com/api/v1/task`);
-        setTask(response.data)
-    }
-    
-
-useEffect(() => {
- loadData();
-
-}, [])
-
-
-
-
-const deletecontact=(id)=>{
-  if (window.confirm('confirm delete contact!!')) {
-    axios.delete(`https://todo22a.herokuapp.com/api/v1/task/${id}`);
-    toast.success('contact deleted successfully');
-    setTimeout(()=>loadData(),500);
-    
-  }
-}
+     useEffect(() => {
+      
+     loadData(id);
+       
+      }, [id])
+      
+      const deletecontact=(id)=>{
+        if (window.confirm('confirm delete contact!!')) {
+          axios.delete(`https://todo22a.herokuapp.com/api/v1/task/${id}`);
+          toast.success('contact deleted successfully');
+          setTimeout(()=>loadData(),500);
+          
+        }
+      }
+      
 
 
-console.log(task);
+console.log(getdata);
+
+
   return (
-    <div>
+    <div className="">
     <Link to='/addcontact'>
-          <a class="f6 link dim ph3 pv2 mb2 dib ma3 br2 white bg-blue" href="#0">Add todo</a>
+          <a className="f6 link dim ph3 pv2 mb2 dib tc ml7 br2 white bg-blue" href="#0">Add todo {id} </a>
           </Link>
     <div class="pa4 pt2">
     <div class="overflow-auto">
@@ -58,9 +63,8 @@ console.log(task);
           </tr>
         </thead>
     {
-        task ? task.map((tasks,idx)=>(
-           
-      <tbody class="lh-copy">
+      getdata? getdata.map((tasks,idx)=>(
+        <tbody class="lh-copy">
         <tr key={tasks.id} >
           <td class="pv3 pr3 bb white b--black-20">{idx+1}</td>
         
@@ -72,19 +76,15 @@ console.log(task);
           <Link to={`/update/${tasks.id}`}>
           <a class="f6 link dim ph3 pv2 mb2 br2 dib ma3 black  bg-light-blue" href="#0">Edit</a>
           </Link>
-          <a class="f6 link dim ph3 pv2 mb2 dib br2 ma3 black bg-red" href="#0" onClick={()=>deletecontact(tasks.id) }>Delete</a>
+          <a class="f6 link dim ph3 pv2 mb2 dib br2 ma3 black bg-red" href="#0" onClick={()=>deletecontact(tasks.id)}>Delete</a>
           <Link to={`/view/${tasks.id}`}>
           <a class="f6 link dim ph3 pv2 mb2 dib ma3 br2 black bg-gray" href="#0">view</a>
           </Link>
           </td>
         </tr>
       </tbody>
-  
- 
-
-         )): null
+      )): null
     }
-    
 
     </table>
     </div>
@@ -93,4 +93,4 @@ console.log(task);
   )
 }
 
-export default Home
+export default Dashboard

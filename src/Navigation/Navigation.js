@@ -8,7 +8,7 @@ const Navigation = () => {
   const [toggleNav, setToggleNav] = useState(false)
   return (
     <div className='pd_contain'>
-    <div className='fl w-100 pa2 ba '>
+    <div className='w-100 pa2 ba '>
       <div className='flex justify-between'>
       <div className='f3 link dim i white pv2 '>
       <Link className='white pv2 ba br3 bg-dark-blue' to='/'>

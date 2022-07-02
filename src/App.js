@@ -13,23 +13,29 @@ import Protected from "./Authentication/Protected";
 import Success from "./Success/Success";
 import Update from "./Success/Update";
 import UserHome from "./Home/UserHome";
+import Dashboard from "./pages/Dashboard";
+
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
+   
     <BrowserRouter>
-    <ToastContainer position='top-center'/>
     <Navigation/>
+    <ToastContainer position='top-center'/>
+ 
     <Routes>
     <Route path="/" element={<UserHome/>} />
     <Route path="/signin" element={<Signin/>} />
     <Route path="/signup" element={<Signup/>} />
+    <Route path="/:id" element={<Dashboard/>} />
+    
 
     <Route element={<Protected/>}>
     <Route path="/success" element={<Success/>} />
     <Route path="/update" element={<Update/>} />
-    <Route path="/home" element={<Home/>} />
+    <Route path="/home/:id" element={<Home/>} />
     <Route path="/addcontact" element={<Addlist/>} />
     <Route path="/update/:id" element={<Addlist/>} />
     <Route path="/view/:id" element={<View/>} />

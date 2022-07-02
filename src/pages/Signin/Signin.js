@@ -39,12 +39,12 @@ const Signin = () => {
         setLogin(response.data.message);
       } else {
         toast.success(`Welcome back ${response.data.data.username}`);
-        setTimeout(()=>navigate('/home'),1500);
+        setTimeout(()=>navigate(`/${response.data.data.id}`),1500);
       }
     }).catch((err)=>toast.error(err.response.data.message))
     
     }
-
+   
   
       const handleChange = (e) => {
         setForm({

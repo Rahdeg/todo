@@ -40,7 +40,7 @@ const Addcontact = () => {
         setState({user_id:'',todo:''});
       }).catch((err)=>toast.error(err.response.data));
       toast.success('Contact Added Successfully')
-      setTimeout(()=>navigate('/home'),500);
+      setTimeout(()=>navigate(`/${user_id}`),500);
       } else {
         axios.put(`https://todo22a.herokuapp.com/api/v1/task/edit/${id}`,{
        todo
@@ -48,7 +48,7 @@ const Addcontact = () => {
         setState({id:'',todo:''});
       }).catch((err)=>toast.error(err.response.data));
       toast.success('Contact Updated Successfully')
-      setTimeout(()=>navigate('/home'),500);
+      setTimeout(()=>navigate(`/${user_id}`),500);
       }
       
     }
@@ -80,7 +80,7 @@ const Addcontact = () => {
       </div>
     </fieldset>
     <div class="mt3"><input class=" ph3 pv2 input-reset ba b--black  grow pointer f6 w-100 measure bg-green" type="submit" value={id ? 'update contact': 'save'} /></div>
-    <Link to='/'>
+    <Link to={`/${user_id}`}>
     <div class="mt3"><input class=" ph3 pv2 input-reset ba b--black white grow pointer f6 w-100 measure bg-black" type="submit" value="Go Back"/></div>
     </Link>
    
